@@ -34,6 +34,10 @@
       {
         "value": "project.private.config.json",
         "type": "file"
+      },
+      {
+        "value": "project.config.example.json",
+        "type": "file"
       }
     ],
     "include": []

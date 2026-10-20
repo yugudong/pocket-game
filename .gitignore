@@ -11,6 +11,7 @@ __pycache__/
 # Local WeChat tools, downloaded API definitions and credentials
 tools/wx-api-reference.d.ts
 project.private.config.json
+/miniprogram/project.config.json
 .env
 .env.*
 !.env.example

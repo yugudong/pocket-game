@@ -11,8 +11,9 @@ OUTPUT.parent.mkdir(exist_ok=True)
 ALLOWED = {'.js', '.json', '.wxml', '.wxss', '.png'}
 with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as archive:
     for file in sorted(MINI.rglob('*')):
-        if file.is_file() and file.suffix in ALLOWED and file.name != 'project.private.config.json' and 'node_modules' not in file.parts:
+        if file.is_file() and file.suffix in ALLOWED and file.name not in {'project.private.config.json', 'project.config.json'} and 'node_modules' not in file.parts:
             archive.write(file, 'miniprogram/' + file.relative_to(MINI).as_posix())
+    archive.write(MINI / 'project.config.example.json', 'miniprogram/project.config.json')
     archive.write(ROOT / 'README.md', 'README.md')
     for name in ('CHANGELOG.md', '微信小程序开发经验总结.md'):
         file = ROOT / name

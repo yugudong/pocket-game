@@ -19,9 +19,10 @@
 ```sh
 git clone https://github.com/yugudong/pocket-game.git
 cd pocket-game
+npm run setup:wechat
 ```
 
-在微信开发者工具中导入 `miniprogram/`，项目类型选择“小程序”。AppID：`touristappid`。
+在微信开发者工具中导入 `miniprogram/`，项目类型选择“小程序”。公共模板使用 `touristappid`；需要真机调试或上传时，在本机生成的 `miniprogram/project.config.json` 中填写自己的 AppID。该文件不入库，已有配置不会被初始化命令覆盖。
 普通编译即可运行，不需要 npm 构建或业务服务器。真机调试、预览和上传需要自己的开发者权限。
 
 使用 Node.js 22 或更高版本，在根目录验证：
@@ -45,6 +46,7 @@ docs/              玩法、开发说明和精选验证记录
 ```
 
 `dist/`、`output/`、本机依赖、微信私有配置和浏览器缓存均不入库。
+真实 AppID 和 AppSecret 不写入公开源码；检查命令会拒绝已跟踪文件中的真实 AppID。
 
 ## 版本与验证
 

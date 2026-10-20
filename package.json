@@ -9,6 +9,7 @@
   },
   "engines": { "node": ">=22" },
   "scripts": {
+    "setup:wechat": "node tools/setup_wechat.js",
     "check": "node tools/check_source.js",
     "test": "node tools/test.js",
     "test:network": "node tools/test.js --network",

@@ -7,4 +7,5 @@ function check(file){
 }
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){if(['node_modules','runtime'].includes(entry.name)||entry.name==='project.private.config.json')continue;const file=path.join(dir,entry.name);if(entry.isDirectory())walk(file);else check(file);}}
 for(const dir of ['miniprogram','tests','tools'])walk(path.join(root,dir));check(path.join(root,'package.json'));
+require('./check_public_config').checkPublicConfig(root);
 console.log('PASS: '+scripts+' JavaScript files and '+json+' JSON files');
