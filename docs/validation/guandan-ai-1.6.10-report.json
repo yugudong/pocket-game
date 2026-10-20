@@ -1,0 +1,99 @@
+{
+  "localVersion": "1.6.10",
+  "lastConfirmedExperienceVersion": "1.6.2",
+  "uploaded": false,
+  "testsPassed": 182,
+  "newRegressionTests": 24,
+  "fullBotGames": 12,
+  "fullBotGameCommands": 1125,
+  "fullMatchRounds": 13,
+  "doudizhuRegressionGames": 24,
+  "doudizhuRegressionCommands": 1045,
+  "officialCompilerPassed": true,
+  "runtimeChangedVs169": [
+    "miniprogram/core/guandan-ai-lead.js",
+    "miniprogram/core/guandan-ai.js"
+  ],
+  "frozen169ModulesVerifiedAgainstOriginalZip": 9,
+  "probeMatchesNative": 30,
+  "fixedStateReview": {
+    "baselineVersion": "1.6.9",
+    "newVersion": "1.6.10",
+    "baselineSelfGames": 60,
+    "baselineDecisions": 5492,
+    "screenedFreeLeads": 229,
+    "description": "Screening is deliberately broad: a stronger single/pair, some weaker same-kind move, no larger independently estimated remainder. Not every screened lead is an error.",
+    "probeMatchesNative": 30,
+    "ordinaryControlLeads": 58,
+    "changed": 22,
+    "priorControlCardsRetained": 20
+  },
+  "finalSelfPlay": {
+    "seeds": 60,
+    "offset": 5000,
+    "decisions": 5516,
+    "screenedFreeLeads": 212,
+    "note": "Broad screening counts are not error counts or a win-rate metric."
+  },
+  "benchmark": {
+    "challenger": "current",
+    "opponent": "tools/fixtures/guandan-ai-1.6.9/guandan-ai.js",
+    "seedOffset": 6000,
+    "levels": "2-A",
+    "seedPairs": 100,
+    "games": 200,
+    "wins": 103,
+    "winRate": "52%",
+    "netUpgrade": 28,
+    "decisions": 8836,
+    "averageMs": 9.72,
+    "p95Ms": 23.65,
+    "maxMs": 71,
+    "exactWinRate": 51.5
+  },
+  "developmentLeadOnlyBenchmark": {
+    "challenger": "current",
+    "opponent": "tools/fixtures/guandan-ai-1.6.9/guandan-ai.js",
+    "seedOffset": 5400,
+    "levels": "2-A",
+    "seedPairs": 100,
+    "games": 200,
+    "wins": 101,
+    "winRate": "51%",
+    "netUpgrade": 10,
+    "decisions": 9358,
+    "averageMs": 9.47,
+    "p95Ms": 23.24,
+    "maxMs": 59,
+    "exactWinRate": 50.5
+  },
+  "developmentLeadOnlyUdp": {
+    "testsPassed": 4,
+    "commands": 81,
+    "guandanDurationMs": 148793.125,
+    "fileDurationMs": 195883.4663,
+    "includedInFinalTestsPassed": false,
+    "note": "Before extension from free lead to smaller legal replies. Transport unchanged; not a final-policy UDP rerun."
+  },
+  "sourceSha256": {
+    "guandan-ai-belief.js": "9d4adc9bbcc215bc7f37fca893b58629d3ce16fc36af9bf161563d747ce55e0d",
+    "guandan-ai-circle.js": "12c9dce5e159ccbdf71d7133c8a75b1cbaa83368f5829840a0931024e7c1e250",
+    "guandan-ai-endgame.js": "d59779f623ca379c0d8ebe3e93a370c858d0ee2ae6f377fbdf25c7f8958b5783",
+    "guandan-ai-exit.js": "bdd2ff1f13a6e8f33ce870402c3d0eed82a15cf3b1653041e0149bc38f8b9bf6",
+    "guandan-ai-lead.js": "25690e9c9c333693ea31f8a44608746cc3c23a69d315fd7ae301155c78aaecf5",
+    "guandan-ai-planner.js": "7cff8281844b6adf46d735ea68f15003c970cfe743b0615be58a4bc9227b242c",
+    "guandan-ai-public.js": "1a3aace8c2c229aaad592ba2b4b957564e31814a66fb4c8e5d51e0932dafc12b",
+    "guandan-ai-retention.js": "988c9526950c59cc9f42082a3408a0f035f246c27a6a4e66252da14166788573",
+    "guandan-ai.js": "708d3b113faed32a405436e14a335e308978ed2d8aaab7307fab2139e2b887d0"
+  },
+  "package": "pocket-board-games-1.6.10-wechat.zip",
+  "packageBytes": 616270,
+  "runtimeUncompressedBytes": 809655,
+  "packageSha256": "c7605b49d8a00f1b1d069a3ed6a4ef085845146c50507e625c1f532d2b982111",
+  "packageContentsVerifiedAgainstCurrentFiles": true,
+  "limitations": [
+    "Public-hand inference and planning are approximate and bounded.",
+    "One paired 200-game internal sample is not proof of stable strength gain or human win rate.",
+    "No WeChat physical-device performance test or experience upload."
+  ]
+}

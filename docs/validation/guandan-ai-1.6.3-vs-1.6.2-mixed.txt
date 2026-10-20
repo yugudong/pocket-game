@@ -1,0 +1,15 @@
+........................................................................................................................
+{
+  "opponent": "tools/fixtures/guandan-ai-1.6.2.js",
+  "seedOffset": 60,
+  "levels": "2-A",
+  "seedPairs": 60,
+  "games": 120,
+  "wins": 70,
+  "winRate": "58%",
+  "netUpgrade": 60,
+  "decisions": 4730,
+  "averageMs": 1.52,
+  "p95Ms": 6.11,
+  "maxMs": 33
+}

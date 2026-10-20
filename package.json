@@ -1,0 +1,20 @@
+{
+  "name": "pocket-game",
+  "version": "1.6.10",
+  "private": true,
+  "description": "支持局域网联机与智能人机的微信桌游小程序",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yugudong/pocket-game.git"
+  },
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "node tools/check_source.js",
+    "test": "node tools/test.js",
+    "test:network": "node tools/test.js --network",
+    "compile:wechat": "python tools/compile_wechat.py",
+    "package:wechat": "python tools/package_wechat.py",
+    "benchmark:guandan": "node tools/benchmark_guandan.js",
+    "benchmark:doudizhu": "node tools/benchmark_doudizhu.js"
+  }
+}

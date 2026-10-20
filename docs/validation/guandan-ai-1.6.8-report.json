@@ -1,0 +1,115 @@
+{
+  "localVersion": "1.6.8",
+  "lastConfirmedExperienceVersion": "1.6.2",
+  "uploaded": false,
+  "testsPassed": 138,
+  "unitAndIntegrationTestsPassed": 134,
+  "newRegressionTests": 9,
+  "realUdpSessionTestsPassed": 4,
+  "realUdpCommands": 68,
+  "realUdpGuandanDurationMs": 140239.2599,
+  "realUdpFileDurationMs": 189536.7992,
+  "officialCompilerPassed": true,
+  "fullBotGames": 12,
+  "fullBotGameCommands": 1006,
+  "fullMatchRounds": 16,
+  "doudizhuRegressionGames": 24,
+  "doudizhuRegressionCommands": 1045,
+  "benchmarks": {
+    "freshVs167": {
+      "challenger": "current",
+      "opponent": "tools/fixtures/guandan-ai-1.6.7/guandan-ai.js",
+      "seedOffset": 2200,
+      "levels": "2-A",
+      "seedPairs": 100,
+      "games": 200,
+      "wins": 106,
+      "winRate": "53%",
+      "netUpgrade": -6,
+      "decisions": 7895,
+      "averageMs": 10.45,
+      "p95Ms": 28.15,
+      "maxMs": 86
+    },
+    "freshVs166": {
+      "challenger": "current",
+      "opponent": "tools/fixtures/guandan-ai-1.6.6/guandan-ai.js",
+      "seedOffset": 2200,
+      "levels": "2-A",
+      "seedPairs": 100,
+      "games": 200,
+      "wins": 102,
+      "winRate": "51%",
+      "netUpgrade": 4,
+      "decisions": 7943,
+      "averageMs": 9.98,
+      "p95Ms": 26.78,
+      "maxMs": 97
+    },
+    "diagnosticSeedsVs166": {
+      "challenger": "current",
+      "opponent": "tools/fixtures/guandan-ai-1.6.6/guandan-ai.js",
+      "seedOffset": 1800,
+      "levels": "2-A",
+      "seedPairs": 100,
+      "games": 200,
+      "wins": 118,
+      "winRate": "59%",
+      "netUpgrade": 89,
+      "decisions": 8220,
+      "averageMs": 10.25,
+      "p95Ms": 27.46,
+      "maxMs": 114
+    }
+  },
+  "diagnosticSeedsPrevious167Vs166": {
+    "games": 200,
+    "wins": 94,
+    "winRate": 47,
+    "netUpgrade": 2
+  },
+  "benchmarkConclusion": "Targeted grouping and over-preservation errors fixed. Fresh sets show 53% vs 1.6.7 but net upgrades -6, and 51% vs 1.6.6 with +4. No stable overall superiority established. Old diagnostic set improved 47% to 59% against the same 1.6.6 opponent; this is not independent confirmation.",
+  "preservedModulesVerified": [
+    "guandan-ai-exit.js",
+    "guandan-cards.js",
+    "guandan-page.js",
+    "guandan-ai-endgame.js"
+  ],
+  "plannerEstimatesComparedTo167": true,
+  "publicViewsOnly": true,
+  "openingReplays": {
+    "cases": 11,
+    "changedMoves": 6,
+    "file": "dist/validation/guandan-ai-1.6.8-opening-replays.json"
+  },
+  "runtimeSha256": {
+    "guandan-ai.js": "cdf4fb54eea032db58ad4a7f525c8116466fea96fcc680922be2acc1de3ac397",
+    "guandan-ai-planner.js": "7cff8281844b6adf46d735ea68f15003c970cfe743b0615be58a4bc9227b242c",
+    "guandan-ai-retention.js": "988c9526950c59cc9f42082a3408a0f035f246c27a6a4e66252da14166788573",
+    "guandan-ai-exit.js": "bdd2ff1f13a6e8f33ce870402c3d0eed82a15cf3b1653041e0149bc38f8b9bf6",
+    "guandan-cards.js": "e81a5070bb54b1dc5b0f864b2736bf7d5971ab4e16c187f334bcd2e3115fd4fe",
+    "guandan-page.js": "bc02a5bd2a1499c7b45166ef745015eafdce698dc88306a1a20bce1ad8a60c38",
+    "guandan-ai-endgame.js": "d59779f623ca379c0d8ebe3e93a370c858d0ee2ae6f377fbdf25c7f8958b5783"
+  },
+  "package": "pocket-board-games-1.6.8-wechat.zip",
+  "packageBytes": 612231,
+  "runtimeBytes": 805510,
+  "packageSha256": "206a9e0948855d7b548953cac29183959c0f4688fe1bedc839f44c5dce9f68f1",
+  "packageSourceVerified": true,
+  "frozen167MatchesOriginalZip": true,
+  "validationCommands": [
+    "node --test tests/guandan.test.js tests/guandan-ai.test.js tests/guandan-retention.test.js tests/guandan-retention-fix.test.js tests/guandan-exit.test.js tests/guandan-cooperation.test.js tests/guandan-page.test.js tests/guandan-layout.test.js tests/guandan-touch.test.js tests/card-round-details.test.js tests/doudizhu.test.js tests/doudizhu-ai.test.js tests/doudizhu-page.test.js tests/wire.test.js",
+    "node --test --test-concurrency=1 tests/session.test.js",
+    "python tools/compile_wechat.py",
+    "node tools/benchmark_guandan.js 100 tools/fixtures/guandan-ai-1.6.6/guandan-ai.js 1800 mixed",
+    "node tools/benchmark_guandan.js 100 tools/fixtures/guandan-ai-1.6.7/guandan-ai.js 2200 mixed",
+    "node tools/benchmark_guandan.js 100 tools/fixtures/guandan-ai-1.6.6/guandan-ai.js 2200 mixed",
+    "python tools/package_wechat.py 1.6.8"
+  ],
+  "limits": [
+    "Bounded partition planning retains legal witnesses but is not a global optimum proof.",
+    "Diagnostic seeds were used to locate errors and are separate from fresh seeds.",
+    "Different opponent versions must not be treated as the same baseline.",
+    "Desktop timings and native UDP tests do not replace WeChat phone validation."
+  ]
+}

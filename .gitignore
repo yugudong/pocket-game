@@ -1,0 +1,25 @@
+# Dependencies and generated output
+node_modules/
+/dist/
+/output/
+/coverage/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+
+# Local WeChat tools, downloaded API definitions and credentials
+tools/wx-api-reference.d.ts
+project.private.config.json
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+
+# Editor and operating-system state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

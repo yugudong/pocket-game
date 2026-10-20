@@ -1,0 +1,2 @@
+@import "../guandan/guandan.wxss";
+.lobby-seats{grid-template-columns:1fr}.lobby-seat{min-height:160rpx}.seat-name{margin:16rpx 0 8rpx}

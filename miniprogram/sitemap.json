@@ -1,0 +1,1 @@
+{"desc":"只索引游戏首页，不索引私人房间", "rules":[{"action":"allow","page":"pages/home/home"},{"action":"disallow","page":"pages/avalon/avalon"},{"action":"disallow","page":"pages/guandan/guandan"},{"action":"disallow","page":"pages/guandan-table/guandan-table"}]}

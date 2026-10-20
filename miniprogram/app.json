@@ -1,0 +1,7 @@
+{
+  "pages": ["pages/home/home", "pages/avalon/avalon", "pages/guandan/guandan", "pages/guandan-table/guandan-table", "pages/doudizhu/doudizhu", "pages/doudizhu-table/doudizhu-table", "pages/goodcopbadcop/goodcopbadcop"],
+  "window": {"navigationBarTitleText":"口袋桌游", "navigationBarBackgroundColor":"#f7f4ec", "navigationBarTextStyle":"black", "backgroundColor":"#f7f4ec"},
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

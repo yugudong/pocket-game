@@ -1,0 +1,1 @@
+PASS: JSON, all JS syntax, all official WXML/WXSS compilers

@@ -1,0 +1,25 @@
+{
+  "localVersion": "1.6.4",
+  "lastConfirmedExperienceVersion": "1.6.2",
+  "uploaded": false,
+  "testsPassed": 57,
+  "realUdpGuandanPassed": true,
+  "officialCompilerPassed": true,
+  "benchmark": {
+    "opponent": "1.6.3",
+    "games": 200,
+    "wins": 108,
+    "levels": "2-A",
+    "seedOffset": 500,
+    "seedPairs": 100,
+    "netUpgrade": 10,
+    "averageMs": 1.8,
+    "p95Ms": 7.88,
+    "maxMs": 44
+  },
+  "runtimeSha256": {
+    "guandan-ai.js": "833bae75c684f4f743d551b63116df51699c23e8c842b988a1283267ad300b29",
+    "guandan-ai-public.js": "7a6e416aea1f934454cbc6640e2d07c31254ac485e4299bbf9176e1983f556cd",
+    "guandan-ai-endgame.js": "b4f99ade2c90e2ac4c1e8bb9cae3530633daa7a4551fc6a26b4aa2069ceb3bfc"
+  }
+}

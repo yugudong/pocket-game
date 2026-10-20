@@ -1,0 +1,38 @@
+<view class="page guandan">
+  <view wx:if="{{sharePreview}}" class="card intro"><view class="entry-symbol">♥ ♠</view><view class="title">斗地主</view><view class="muted">三人对战 · 可添加聪明电脑</view><view class="spacer"></view><view wx:if="{{hasInvitation}}">朋友邀请你加入「{{inviteName}}」</view><view>通过微信“前往小程序”打开完整小程序，与房主连接同一 Wi-Fi，一起开桌。</view></view>
+  <view wx:elif="{{loading}}" class="card empty">正在准备牌桌…</view>
+  <block wx:else>
+    <view wx:if="{{error}}" class="notice error">{{error}}</view><view wx:if="{{networkMessage}}" class="notice">{{networkMessage}}</view>
+    <view wx:if="{{inviteConflict}}" class="card"><view class="subtitle">加入「{{inviteName}}」</view><view class="muted">你还在另一间房里，先退出才能加入邀请。</view><view class="spacer"></view><button class="primary" disabled="{{submitting}}" bindtap="switchInvitedRoom">退出当前房间并加入邀请</button><button class="quiet" bindtap="dismissInvitation">暂不加入</button></view>
+    <view wx:if="{{otherRoom}}" class="card"><view class="subtitle">另一张桌子还在等你</view><view class="muted">当前房间仍在进行，退出后就可以创建斗地主牌桌。</view><view class="spacer"></view><button class="primary" bindtap="continueOther">继续当前房间</button><button class="quiet" bindtap="leave">退出当前房间</button></view>
+    <block wx:elif="{{screen === 'entry'}}">
+      <view class="entry-heading row"><view><view class="eyebrow">ONE LANDLORD, TWO FARMERS</view><view class="title">斗地主</view><view class="entry-copy">一人当地主，两家并肩斗。</view></view><view class="entry-symbol">♥<text>♠</text></view></view>
+      <view class="entry-meta"><text>三人对战</text><text>1～3 位真人</text><text>可加电脑</text></view>
+      <view class="tabs"><view class="tab {{tab === 'create' ? 'active' : ''}}" data-tab="create" bindtap="switchTab">创建房间</view><view class="tab {{tab === 'join' ? 'active' : ''}}" data-tab="join" bindtap="switchTab">加入房间</view></view>
+      <view class="card">
+        <view wx:if="{{hasInvitation}}"><view class="subtitle">加入「{{inviteName}}」</view><view class="muted">无需口令。双方连接同一 Wi-Fi 或热点，房主保持前台。房主 IP：{{ip}}</view><view class="spacer"></view></view>
+        <text class="label">你的昵称</text><input class="input" value="{{nickname}}" data-key="nickname" bindinput="input" maxlength="16" placeholder="大家怎么称呼你？"/>
+        <block wx:if="{{tab === 'create'}}"><text class="label">房间名称</text><input class="input" value="{{roomName}}" data-key="roomName" bindinput="input" maxlength="24"/></block>
+        <block wx:elif="{{!hasInvitation}}"><view class="row"><text class="label">附近的斗地主房间</text><text class="link" bindtap="refresh">刷新 ↻</text></view><view wx:if="{{searchError}}" class="muted">{{searchError}}</view><view wx:if="{{!rooms.length}}" class="empty"><view>正在寻找附近的牌桌</view><view class="muted">请连接同一 Wi-Fi 或热点</view></view><view wx:for="{{rooms}}" wx:key="id" class="room-option {{selectedRoom === item.id ? 'chosen' : ''}}" data-id="{{item.id}}" bindtap="chooseRoom"><view>{{item.name}}</view><view class="muted">{{item.ip}} · {{item.count}}/3 席 · {{item.playing ? '进行中，仅原玩家重连' : '大厅内可替换电脑入座'}}</view></view><view class="link manual-link" bindtap="toggleManual">{{manual ? '收起手动输入' : '搜索不到？手动输入房主 IP'}}</view><input wx:if="{{manual}}" class="input" value="{{ip}}" data-key="ip" bindinput="input" maxlength="15" placeholder="例如 192.168.1.8"/></block>
+        <block wx:if="{{!hasInvitation}}"><text class="label">房间口令</text><input class="input" value="{{password}}" data-key="password" bindinput="input" password maxlength="16" placeholder="4～16 个字符，告诉同桌朋友"/></block>
+        <button class="primary" loading="{{submitting}}" disabled="{{submitting || !nickname || (!hasInvitation && !password) || (tab === 'join' && !ip)}}" bindtap="enter">{{tab === 'create' ? '创建牌桌' : '加入牌桌'}}</button>
+      </view><view class="muted lan-tip">一个人也能玩：建房后点“电脑补满”，再准备开局。真人朋友使用同一 Wi-Fi 或热点加入。首次加载小程序需要联网，牌局与人机在本地运行。</view>
+    </block>
+    <block wx:elif="{{!view}}"><view class="card empty">正在恢复牌桌连接…</view><button class="secondary" bindtap="restore" loading="{{submitting}}">重新连接</button><button class="quiet" bindtap="leave">退出房间</button></block>
+    <block wx:else>
+      <view class="row table-heading"><view class="grow"><view class="room-title">{{view.room}}</view><view class="muted">斗地主 · {{view.phase === 'lobby' ? '等待开局' : '第 '+view.round+' 副'}} · {{host ? '你是房主' : '局域网'}}</view></view><text class="connection {{connected ? 'online' : ''}}">{{connected ? '● 已连接' : '○ 重连中'}}</text></view>
+      <view wx:if="{{!connected}}" class="notice">请让房主回到前台。<text class="link" bindtap="restore">重新连接 →</text></view>
+      <block wx:if="{{view.phase === 'lobby'}}">
+        <view class="card lobby-intro"><view class="subtitle">先叫分，再一起斗地主</view><view class="muted">三人依次叫分决定地主，另外两人为农民。电脑自动准备，真人各自准备。</view><view wx:if="{{host}}" class="bot-controls row gap"><button class="secondary grow" disabled="{{!canAct || players.length >= 3}}" bindtap="addBot">＋ 添加电脑</button><button class="primary grow" disabled="{{!canAct || players.length >= 3}}" bindtap="fillBots">电脑补满</button></view></view>
+        <view class="lobby-seats"><view wx:for="{{players}}" wx:key="id" class="lobby-seat {{item.teammate ? 'ally' : 'enemy'}}"><view class="row"><text class="tag">{{item.seat+1}} 号座位</text><text class="muted">{{item.bot ? '电脑' : item.host ? '房主' : '真人'}}</text></view><view class="seat-name">{{item.name}}{{item.me ? ' · 你' : ''}}</view><view class="muted">{{item.online ? item.status : '已离线'}}</view><view wx:if="{{host && !item.host}}" class="row seat-tools"><text data-id="{{item.id}}" bindtap="kick">移出</text></view></view><view wx:for="{{vacancies}}" wx:key="seat" class="lobby-seat vacant"><view>{{item.seat}} 号 · 空座</view><view class="muted">等朋友，或添加电脑</view></view></view>
+        <view class="card"><button class="{{my.ready ? 'secondary' : 'primary'}}" disabled="{{!canAct}}" bindtap="ready">{{my.ready ? '取消准备' : '我准备好了'}}</button><view class="spacer"></view><button wx:if="{{host}}" class="primary" disabled="{{!canAct || !allReady}}" bindtap="start">开始斗地主 · 叫分</button><view wx:else class="muted">等待房主开始。</view></view>
+        <view wx:if="{{host}}" class="card"><button class="secondary" open-type="share" disabled="{{!canShareRoom}}">邀请好友加入这桌</button><view class="muted invite-tip">好友可在大厅替换电脑；开局后座位固定。</view><view class="row"><text class="muted">房主 IP：{{localIP || '请连接 Wi-Fi 后刷新'}}</text><text class="link" bindtap="tapIP">{{localIP ? '复制' : '刷新'}}</text></view></view>
+      </block>
+      <view wx:else class="card"><view>牌局已开始，正在切换横屏桌台。</view><button class="primary" bindtap="enterTable">进入横屏牌桌</button></view>
+      <view wx:if="{{busy}}" class="muted">正在确认操作…</view>
+      <view class="row footer-actions"><text class="link" bindtap="toggleRules">{{rulesOpen ? '收起规则' : '玩法规则'}}</text><text class="leave-link" bindtap="leave">{{host ? '解散房间' : '退出房间'}}</text></view>
+    </block>
+    <view wx:if="{{screen === 'entry'}}" class="rules-link link" bindtap="toggleRules">{{rulesOpen ? '收起规则 ↑' : '先看看怎么玩 →'}}</view>
+    <view wx:if="{{rulesOpen}}" class="card rules"><view class="subtitle">经典三人斗地主</view><view>一副54张牌，每人17张，留3张底牌。依次叫1/2/3分或不叫，必须高于前面的分数；叫3分立即成为地主。都不叫时首叫玩家以1分当地主。地主拿公开底牌并先出。</view><view>牌点从小到大为3～A、2、小王、大王。顺子至少5张，连对至少3对，飞机至少2组三张；连续牌型不含2和大小王，A不能作1。支持单张、对子、三张、三带一/二、飞机带单/对、四带二/两对。</view><view>本桌单翅膀允许带对子，不能带双王或四张，也不能与机身同点；四带二单牌可同点，但不能带双王。四带二不算炸弹。</view><view>王炸大于四张炸弹，炸弹大于普通牌型；普通牌型必须同型同张数。连续两人不出，最后出牌者重新领出。任意一人出完，其所属队伍获胜。</view><view>炸弹、王炸每次翻倍；地主赢且两名农民都未出牌为春天，农民赢且地主只出过一手为反春天，均再翻倍。地主得失分是叫分×倍数×2，农民各为叫分×倍数；下一副保留累计积分。</view><view>电脑只看自己的手牌和公开信息。开局后自动横屏，支持滑动选牌、手动理牌；手牌固定6张高度，余牌不超过10张才显示数量。</view></view>
+  </block>
+</view>

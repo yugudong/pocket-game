@@ -1,0 +1,25 @@
+........................................................................................................................................................................................................
+{
+  "challenger": "current",
+  "opponent": "tools/fixtures/doudizhu-ai-1.6.5/doudizhu-ai.js",
+  "seedOffset": 200,
+  "seedPairs": 100,
+  "games": 200,
+  "wins": 88,
+  "winRate": 44,
+  "roles": {
+    "landlord": {
+      "games": 100,
+      "wins": 34
+    },
+    "farmers": {
+      "games": 100,
+      "wins": 54
+    }
+  },
+  "netUnits": -25,
+  "decisions": 3722,
+  "averageMs": 1.61,
+  "p95Ms": 5.39,
+  "maxMs": 35.07
+}

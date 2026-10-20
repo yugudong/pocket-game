@@ -1,0 +1,69 @@
+{
+  "localVersion": "1.6.5",
+  "lastConfirmedExperienceVersion": "1.6.2",
+  "uploaded": false,
+  "testsPassed": 74,
+  "newCooperationTests": 9,
+  "realUdpGuandanPassed": true,
+  "officialCompilerPassed": true,
+  "benchmark": {
+    "challenger": "current",
+    "opponent": "tools/fixtures/guandan-ai-1.6.4/guandan-ai.js",
+    "seedOffset": 1000,
+    "levels": "2-A",
+    "seedPairs": 100,
+    "games": 200,
+    "wins": 98,
+    "winRate": "49%",
+    "netUpgrade": -23,
+    "decisions": 8205,
+    "averageMs": 7.83,
+    "p95Ms": 21.26,
+    "maxMs": 49
+  },
+  "benchmarkConclusion": "No overall win-rate improvement demonstrated; targeted cooperation scenarios pass.",
+  "developmentBenchmarks": [
+    {
+      "games": 40,
+      "wins": 20,
+      "seedOffset": 700
+    },
+    {
+      "games": 80,
+      "wins": 36,
+      "seedOffset": 720
+    },
+    {
+      "games": 80,
+      "wins": 40,
+      "seedOffset": 760
+    }
+  ],
+  "runtimeSha256": {
+    "guandan.js": "21b7686439e77fceb0821ccca3fd8b05638d25928fed78b7e932b40b7412ad17",
+    "guandan-observation.js": "cd6ea1b0fb7e2cec518e4faaddf660280de0b9a24bba61e517181b44951a1f79",
+    "guandan-ai.js": "0bbfaefff3aeea5fda05ebd0838f0e25e911756b2324938eb8985f1ec998d552",
+    "guandan-ai-public.js": "7a6e416aea1f934454cbc6640e2d07c31254ac485e4299bbf9176e1983f556cd",
+    "guandan-ai-endgame.js": "2c1a6c3e2b270a10878435e21daec051663160724897a05e0452358b0fcb44d8",
+    "guandan-ai-belief.js": "9d4adc9bbcc215bc7f37fca893b58629d3ce16fc36af9bf161563d747ce55e0d",
+    "guandan-ai-circle.js": "12c9dce5e159ccbdf71d7133c8a75b1cbaa83368f5829840a0931024e7c1e250"
+  },
+  "runtimeBytes": 772335,
+  "unitAndIntegrationTestsPassed": 70,
+  "udpSessionTestsPassed": 4,
+  "realUdpGuandanPlayCommands": 69,
+  "realUdpGuandanDurationMs": 135096.2877,
+  "realUdpSessionDurationMs": 174982.9871,
+  "package": "pocket-board-games-1.6.5-wechat.zip",
+  "packageBytes": 594238,
+  "packageSha256": "e292d08b753a2f0556c4286ab0d66d56bf160e0ff8b4b26d1c751ebef2d26193",
+  "packageSourceVerified": true,
+  "frozen164MatchesOriginalZip": true,
+  "validationCommands": [
+    "node --test tests/guandan.test.js tests/guandan-ai.test.js tests/guandan-cooperation.test.js tests/guandan-page.test.js tests/guandan-touch.test.js tests/guandan-layout.test.js tests/card-round-details.test.js tests/doudizhu-page.test.js tests/wire.test.js",
+    "node --test --test-concurrency=1 tests/session.test.js",
+    "python tools/compile_wechat.py",
+    "node tools/benchmark_guandan.js 100 tools/fixtures/guandan-ai-1.6.4/guandan-ai.js 1000 mixed",
+    "python tools/package_wechat.py 1.6.5"
+  ]
+}

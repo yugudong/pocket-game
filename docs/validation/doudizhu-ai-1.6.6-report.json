@@ -1,0 +1,95 @@
+{
+  "localVersion": "1.6.6",
+  "lastConfirmedExperienceVersion": "1.6.2",
+  "uploaded": false,
+  "testsPassed": 45,
+  "unitAndIntegrationTestsPassed": 43,
+  "newStrategyTests": 20,
+  "realUdpSessionTestsPassed": 2,
+  "realUdpDoudizhuPassed": true,
+  "realUdpCommands": 28,
+  "realUdpDoudizhuDurationMs": 29738.1127,
+  "officialCompilerPassed": true,
+  "fullBotGames": 24,
+  "fullBotGameCommands": 1045,
+  "benchmark": {
+    "challenger": "current",
+    "opponent": "tools/fixtures/doudizhu-ai-1.6.5/doudizhu-ai.js",
+    "seedOffset": 600,
+    "seedPairs": 100,
+    "games": 200,
+    "wins": 99,
+    "winRate": 49.5,
+    "roles": {
+      "landlord": {
+        "games": 100,
+        "wins": 45
+      },
+      "farmers": {
+        "games": 100,
+        "wins": 54
+      }
+    },
+    "netUnits": 16,
+    "decisions": 3765,
+    "averageMs": 6.58,
+    "p95Ms": 23.37,
+    "maxMs": 62.22
+  },
+  "benchmarkConclusion": "Concrete tactical scenarios improve; no overall win-rate improvement demonstrated against frozen 1.6.5.",
+  "developmentBenchmarks": [
+    {
+      "seedOffset": 0,
+      "games": 40,
+      "wins": 21
+    },
+    {
+      "seedOffset": 200,
+      "games": 200,
+      "wins": 88,
+      "stage": "rewritten planner and larger probability influence"
+    },
+    {
+      "seedOffset": 400,
+      "games": 200,
+      "wins": 86,
+      "stage": "restored planning; before bounded inference"
+    },
+    {
+      "seedOffset": 200,
+      "games": 80,
+      "wins": 39,
+      "stage": "bounded circle influence; before ending margin"
+    }
+  ],
+  "developmentAblations80GamesOffset200": {
+    "baseWins": 36,
+    "noCircleWins": 32,
+    "noEndingWins": 36,
+    "oldPlannerWins": 40,
+    "noControlBonusWins": 36
+  },
+  "runtimeSha256": {
+    "doudizhu.js": "382b249bd75bca32c1a8b388511fe5f1375d996cbae8d5ceffb5fafe22ff8619",
+    "doudizhu-cards.js": "2d427cd7c04f05939f397ce8eb8cdad86fa89117ac217e2f6fb9aa0b1140bf09",
+    "doudizhu-ai.js": "7cfaf07634e3bca2fc242534d980b985c1433fd65ce453c8a27eed9b65e62443",
+    "doudizhu-observation.js": "8203ad20595c45844b66edea335ac3b2efc8d3847bd17a4dce097372d2505af9",
+    "doudizhu-ai-public.js": "5c362e855dd168b7a67930c9e9193795b81da9af595fb561eddf25717c1bd09c",
+    "doudizhu-ai-belief.js": "0e975ffb42c78c7a70870529a18bcef964e051c8b6ba079ad121bb002da59f76",
+    "doudizhu-ai-circle.js": "1c0089b2726c232105256139ab5737725698e14d92a518fb748894daa5f1b532",
+    "doudizhu-ai-endgame.js": "1c0f46e5bd35e79727348e416d54c62b334b3d9b588cd2a709e0b3e4f471554b"
+  },
+  "package": "pocket-board-games-1.6.6-wechat.zip",
+  "packageBytes": 605982,
+  "runtimeBytes": 797118,
+  "packageSha256": "83b754c8301dcc62fb426e8c19a1cb951e2c093ebd0d5e215bfba1e96e00b80d",
+  "packageSourceVerified": true,
+  "frozen165MatchesOriginalZip": true,
+  "validationCommands": [
+    "node --test tests/doudizhu.test.js tests/doudizhu-ai.test.js tests/doudizhu-page.test.js tests/card-round-details.test.js tests/wire.test.js",
+    "node --test --test-concurrency=1 tests/doudizhu-session.test.js",
+    "python tools/compile_wechat.py",
+    "node tools/benchmark_doudizhu.js 100 tools/fixtures/doudizhu-ai-1.6.5/doudizhu-ai.js 600",
+    "python tools/package_wechat.py 1.6.6"
+  ]
+}
